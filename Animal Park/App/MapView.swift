@@ -23,8 +23,8 @@ struct MapView: View {
         GeometryReader { proxy in
             Map(coordinateRegion: $region, annotationItems: locations) { item in
                 // Static Annotation Methods
-    //            MapPin(coordinate: item.location, tint: .accentColor) // Method 1
-    //            MapMarker(coordinate: item.location) // Method 2
+//                MapPin(coordinate: item.location, tint: .accentColor) // Method 1
+//                MapMarker(coordinate: item.location) // Method 2
                 // Custom Annotation Methods
                 MapAnnotation(coordinate: item.location) {
                     MapAnnotationView(location: item)
@@ -51,7 +51,7 @@ struct MapView: View {
                     .padding()
                     .padding(.top, proxy.safeAreaInsets.top)
             )
-        .ignoresSafeArea()
+            .ignoresSafeArea()
         }
     }
 }
