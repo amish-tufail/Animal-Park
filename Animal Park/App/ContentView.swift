@@ -8,14 +8,24 @@
 import SwiftUI
 
 struct ContentView: View {
+    let animals: [Animal] = Bundle.main.decode("animals.json")
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+        NavigationView {
+            List {
+                CoverImageView()
+                    .frame(height: 300.0)
+                    .listRowInsets(EdgeInsets(top: 0.0, leading: 0.0, bottom: 0.0, trailing: 0.0))
+                ForEach(animals) { animal in
+                    NavigationLink {
+                        AnimalDetailView(animal: animal)
+                    } label: {
+                        AnimalListItemView(animal: animal)
+                    }
+                }
+            }
+            .listStyle(.plain)
+            .navigationTitle("Animal Park")
         }
-        .padding()
     }
 }
 
